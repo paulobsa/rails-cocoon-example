@@ -1,0 +1,13 @@
+<div class='nested-fields'>
+  <div class="field">
+    <%= f.label :text %>
+    <%= f.text_field :text, id: :comment_text %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user %>
+    <%= f.text_field :user, id: :comment_user %>
+  </div>
+
+    <%= link_to_remove_association "remove comment", f %>
+</div>

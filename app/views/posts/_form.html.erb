@@ -1,0 +1,36 @@
+<%= form_with(model: post, local: true) do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, id: :post_title %>
+  </div>
+
+  <h3>Comments</h3>
+  <div id='comments'>
+
+  <div class="field">
+    <%= f.fields_for :comments do |comments_form| %>
+      <%= render 'comment_fields', :f => comments_form %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'add comment', f, :comments %>
+    </div>
+
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit 'Save' %>
+  </div>
+<% end %>
